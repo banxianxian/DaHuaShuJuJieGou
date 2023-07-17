@@ -18,20 +18,20 @@ struct compare {
 
 MinHeapNode* HuffmanCodes(char arr[], int frequency[], int size) {
 	MinHeapNode* temp_lChild, * temp_rChild, * top;
-	//½«Ò¶½Úµã°´ÕÕÈ¨ÖØ½øĞĞÅÅĞò£¬´ÓĞ¡µ½´ó£¬·ÅÔÚÒ»¸öÓÅÏÈ¶ÓÁĞÖĞ
+	//å°†å¶èŠ‚ç‚¹æŒ‰ç…§æƒé‡è¿›è¡Œæ’åºï¼Œä»å°åˆ°å¤§ï¼Œæ”¾åœ¨ä¸€ä¸ªä¼˜å…ˆé˜Ÿåˆ—ä¸­
 	priority_queue<MinHeapNode*, vector<MinHeapNode*>, compare> deQueue;
-	//½«Ò¶½Úµã·ÅÈëdeQueueÖĞ
+	//å°†å¶èŠ‚ç‚¹æ”¾å…¥deQueueä¸­
 	for (int i = 0; i < size; i++) {
 		deQueue.push(new MinHeapNode( arr[i],frequency[i] ));
 	}
-	// Éú³Éhuffman tree
-	//deQueue Êı×éÏîÖğ´ÎºÏ²¢£¬×îºóÖ»ÓĞÒ»¸ö
+	// ç”Ÿæˆhuffman tree
+	//deQueue æ•°ç»„é¡¹é€æ¬¡åˆå¹¶ï¼Œæœ€ååªæœ‰ä¸€ä¸ª
 	while (deQueue.size() != 1) {
 		temp_lChild = deQueue.top();
 		deQueue.pop();
 		temp_rChild = deQueue.top();
 		deQueue.pop();
-		//$ ´ú±í·ÇÒ¶½Úµã
+		//$ ä»£è¡¨éå¶èŠ‚ç‚¹
 		top = new MinHeapNode('$', temp_rChild->frequency + temp_lChild->frequency);
 		top->lChild = temp_lChild;
 		top->rChild = temp_rChild;
